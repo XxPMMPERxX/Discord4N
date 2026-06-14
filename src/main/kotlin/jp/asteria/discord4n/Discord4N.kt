@@ -1,6 +1,7 @@
 package jp.asteria.discord4n
 
 import cn.nukkit.plugin.PluginBase
+import jp.asteria.discord4n.command.UpdatePresenceCommand
 import jp.asteria.discord4n.core.Discord
 import net.dv8tion.jda.api.JDABuilder
 import net.dv8tion.jda.api.events.session.ReadyEvent
@@ -17,6 +18,7 @@ class Discord4N : PluginBase() {
         instance = this
         saveDefaultConfig()
 
+        // Botの起動
         try {
             Discord.jda = JDABuilder
                 .createDefault(config.getString("bot-token", ""))
@@ -34,5 +36,13 @@ class Discord4N : PluginBase() {
 
             return
         }
+
+        // 情報をコンソールに出す
+        Discord.load()
+
+        // コマンドの登録
+        server.commandMap.registerAll("asteria.discord4n", listOf(
+            UpdatePresenceCommand()
+        ))
     }
 }

@@ -1,0 +1,12 @@
+name: Discord4N
+main: jp.asteria.discord4n.Discord4N
+version: 1.0.0
+api: [ 2.0.0 ]
+author: VeronicaDiazTaylor
+description: Discordの処理をコンソールコマンドで行わせるプラグイン
+website: https://github.com/XxPMMPERxX/Discord4N
+load: STARTUP
+
+permissions:
+  asteria.discord4n.*:
+    default: op
